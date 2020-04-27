@@ -1,0 +1,40 @@
+<mvc:View controllerName="XFL.XFL.controller.ProjectAdm" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout.form">
+	<Shell>
+		<App busy="{appView>/busy}" class="sapUiSizeCompact">
+			<pages>
+				<Page title="{i18n>Project_title}" showNavButton="false">
+					<content>
+						<l:SimpleForm editable="true">
+							<l:content>
+								<Label text="{i18n>Project_label}"></Label>
+								<VBox>
+									<u:FileUploader id="idfileUploader" width="50%" useMultipart="false" sendXHR="true" sameFilenameAllowed="false" buttonText=""
+										fileType="XLSX" placeholder="{i18n>Project_placeholder}" style="Emphasized" change="onValidate"></u:FileUploader>
+								</VBox>
+							</l:content>
+						</l:SimpleForm>
+						<Table id="projectList" growing="false" mode="SingleSelectLeft" visible="false">
+							<items>
+								<ColumnListItem id="columnListItem">
+									<cells>
+										<Input value="{zxflModel>DATE}" maxLength="10"/>
+									</cells>
+									<cells>
+										<Input value="{zxflModel>COUNTRY_CODE}" maxLength="30"/>
+									</cells>
+									<cells>
+										<Input value="{zxflModel>COMPANY_CODE}" maxLength="30"/>
+									</cells>
+									<cells>
+										<Input value="{zxflModel>AMOUNT}" maxLength="10"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

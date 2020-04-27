@@ -1,0 +1,147 @@
+{
+	"_version": "{{appVersion}}",
+	"start_url": "index.html",
+	"sap.app": {
+		"_version": "{{appVersion}}",
+		"type": "application",
+		"resources": "resources.json",
+		"i18n": "i18n/i18n.properties",
+		"id": "XFL",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "{{appVersion}}"
+		},
+		"dataSources": {
+			"zxflService": {
+				"uri": "/odata/v4/zxlsfileupload.CatalogService/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "4.0"
+				}
+			}
+		}
+	},
+	"sap.fiori": {
+		"_version": "2.0.0",
+		"registrationIds": [],
+		"archeType": "transactional"
+	},
+	"sap.ui": {
+		"_version": "1.40.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "./images/favicon.ico",
+			"favIcon": "./images/favicon.ico"
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"config": {
+			"sapFiori2Adaptation": true
+		},
+		"rootView": {
+			"viewName": "XFL.XFL.view.App",
+			"type": "XML",
+			"id": "app",
+			"async": true
+		},
+		"dependencies": {
+			"minUI5Version": "1.40.0",
+			"libs": {
+				"sap.ui.core": {
+					"minVersion": "1.40.0"
+				},
+				"sap.ui.comp": {
+					"minVersion": "1.40.0"
+				},
+				"sap.m": {
+					"minVersion": "1.40.0"
+				},
+				"sap.ui.layout": {
+					"minVersion": "1.40.0"
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"handleValidation": true,
+		"models": {
+			"": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {
+					"defaultBindingMode": "TwoWay"
+				}
+			},
+			"zxflModel": {
+				"dataSource": "zxflService",
+				"type": "sap.ui.model.odata.v4.ODataModel",
+				"preload": true,
+				"settings": {
+					"autoExpandSelect": true,
+					"operationMode": "Server",
+					"groupId": "$auto",
+					"synchronizationMode": "None"
+				}
+			},
+			"config": {
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleUrl": "./i18n/i18n.properties"
+				}
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "JS",
+				"async": true,
+				"viewPath": "XFL.XFL.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false,
+				"viewLevel": 0,
+				"bypassed": {
+					"target": []
+				}
+			},
+			"routes": [{
+				"name": "home",
+				"pattern": "",
+				"titleTarget": "",
+				"greedy": false,
+				"target": [
+					"project"
+				]
+			}],
+			"targets": {
+				"project": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewName": "ProjectAdm",
+					"viewLevel": 1
+				}
+			}
+		}
+	}
+}
