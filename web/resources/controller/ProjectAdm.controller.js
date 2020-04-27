@@ -151,12 +151,8 @@ sap.ui.define([
 		 */
 		onSave: function () {
 			var oTable = this.byId("projectList"),
-				aItems = oTable.getItems(),
-				error = 0;
-
-			var oLength = aItems.length;
-			console.log(oLength);
-
+				aItems = oTable.getItems();
+				
 			var this_ = this;
 
 			var fnSuccess = function () {
